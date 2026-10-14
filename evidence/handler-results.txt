@@ -1,0 +1,35 @@
+Evidence type: in-memory handler test; no socket, browser, or npm audit.
+
+APP: app-baseline.js
+Home headers: {"Content-Type":"text/html; charset=utf-8"}
+/ "<script>alert(1)</script>" =>   <p>Search: <script>alert(1)</script></p><form><input name="q" placeholder="search"><button>Search</button></form>
+/ "<b>halo</b>" =>   <p>Search: <b>halo</b></p><form><input name="q" placeholder="search"><button>Search</button></form>
+/ "&<>\"'" =>   <p>Search: &<>"'</p><form><input name="q" placeholder="search"><button>Search</button></form>
+/profile "<script>alert(1)</script>" =>   <p>Nama: <script>alert(1)</script></p>
+/profile "<b>halo</b>" =>   <p>Nama: <b>halo</b></p>
+/profile "&<>\"'" =>   <p>Nama: &<>"'</p>
+404 headers: {"Content-Type":"text/plain; charset=utf-8"}
+header_check.js with mocked transport:
+Status: 200
+MISSING content-security-policy
+MISSING x-frame-options
+MISSING x-content-type-options
+MISSING referrer-policy
+
+APP: app-secure.js
+Home headers: {"Content-Type":"text/html; charset=utf-8","Content-Security-Policy":"default-src 'self'; base-uri 'none'; frame-ancestors 'none'; object-src 'none'; form-action 'self'","X-Frame-Options":"DENY","X-Content-Type-Options":"nosniff","Referrer-Policy":"no-referrer","Permissions-Policy":"geolocation=(), microphone=(), camera=()"}
+/ "<script>alert(1)</script>" =>   <p>Search: &lt;script&gt;alert(1)&lt;/script&gt;</p><form><input name="q" placeholder="search"><button>Search</button></form>
+/ "<b>halo</b>" =>   <p>Search: &lt;b&gt;halo&lt;/b&gt;</p><form><input name="q" placeholder="search"><button>Search</button></form>
+/ "&<>\"'" =>   <p>Search: &amp;&lt;&gt;&quot;&#39;</p><form><input name="q" placeholder="search"><button>Search</button></form>
+/profile "<script>alert(1)</script>" =>   <p>Nama: &lt;script&gt;alert(1)&lt;/script&gt;</p>
+/profile "<b>halo</b>" =>   <p>Nama: &lt;b&gt;halo&lt;/b&gt;</p>
+/profile "&<>\"'" =>   <p>Nama: &amp;&lt;&gt;&quot;&#39;</p>
+404 headers: {"Content-Type":"text/plain; charset=utf-8"}
+header_check.js with mocked transport:
+Status: 200
+OK      content-security-policy: default-src 'self'; base-uri 'none'; frame-ancestors 'none'; object-src 'none'; form-action 'self'
+OK      x-frame-options: DENY
+OK      x-content-type-options: nosniff
+OK      referrer-policy: no-referrer
+
+PASS: 40 assertions. Live HTTP and browser not tested.
