@@ -1,0 +1,21 @@
+{
+  "source": "offline training sample",
+  "items": [
+    {
+      "package": "lodash",
+      "installed_version": "4.17.11",
+      "severity": "high",
+      "issue": "Prototype pollution / command injection class vulnerability in old lodash versions",
+      "fix": "Upgrade to a current safe version and run regression tests",
+      "triage_note": "Prioritize if user-controlled objects are processed by lodash merge/template functions"
+    },
+    {
+      "package": "example-old-template-engine",
+      "installed_version": "1.0.0",
+      "severity": "medium",
+      "issue": "Potential XSS when auto-escaping is disabled",
+      "fix": "Enable auto-escaping and update package",
+      "triage_note": "Prioritize if untrusted data is rendered to HTML"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "week3-framework-security-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Starter lab for Web Application Security Week 3",
+  "scripts": {
+    "baseline": "node app-baseline.js",
+    "secure": "node app-secure.js",
+    "headers": "node tools/header_check.js http://localhost:3000/"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "lodash": "4.17.11"
+  }
+}
