@@ -4,9 +4,8 @@ TI215 Keamanan Aplikasi Web, Institut Teknologi Tangerang Selatan.
 
 | Identitas | Keterangan |
 |---|---|
-| Nama | Muhammad Bilal Dzakwan Razin |
-| NIM | Belum diisi |
-| Kelas | Belum dikonfirmasi |
+| Nama | Muhammad Bilal Dzakwan Razin , Arif Hilman Khalis |
+| NIM | 1002250037 , 1002250019 |
 | Tanggal | 14 Oktober 2026 |
 
 Source starter berasal dari dosen. Repository memuat perbandingan baseline/secure, checklist SAST manual, dependency advisory triage, rekomendasi, dan evidence pengujian handler.
